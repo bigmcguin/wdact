@@ -1,0 +1,130 @@
+/*
+  Base page styles. Colours, fonts and spacing come from theme.css.
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--colour-paper);
+  color: var(--colour-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-4);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-3xl);
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: var(--text-xl);
+  margin-top: var(--space-7);
+}
+
+p {
+  margin: 0 0 var(--space-4);
+  max-width: var(--measure);
+}
+
+a {
+  color: var(--colour-accent);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--colour-accent-strong);
+}
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+/* Page layout */
+
+.page {
+  flex: 1;
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: var(--space-7) var(--page-gutter) var(--space-8);
+}
+
+.page:focus {
+  outline: none;
+}
+
+.lede {
+  font-size: var(--text-lg);
+  color: var(--colour-ink-muted);
+}
+
+.steps {
+  max-width: var(--measure);
+  padding-left: var(--space-5);
+}
+
+.steps li {
+  margin-bottom: var(--space-3);
+  padding-left: var(--space-2);
+}
+
+code {
+  font-size: 0.92em;
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-line);
+  border-radius: var(--radius);
+  padding: 0.05em 0.35em;
+}
+
+.site-footer {
+  border-top: 1px solid var(--colour-line);
+  color: var(--colour-ink-muted);
+  font-size: var(--text-sm);
+}
+
+.site-footer p {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: var(--space-5) var(--page-gutter);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

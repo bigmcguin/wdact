@@ -1,0 +1,25 @@
+<!--
+  Shared navigation menu: the snippet every page uses.
+
+  Do not copy menu items or menu markup into pages. Menu items are set in
+  NAV_CONFIG at the top of nav.js; nav.js builds the menu inside the empty
+  <header data-site-nav> placeholder.
+
+  1. In <head>, after theme.css (paths shown for a page in the site root):
+
+     <link rel="stylesheet" href="assets/css/theme.css">
+     <link rel="stylesheet" href="assets/components/nav/nav.css">
+     <script src="assets/components/nav/nav.js" defer></script>
+
+  2. As the first thing inside <body>:
+
+     <header data-site-nav></header>
+
+  3. Give the page's main content id="main" so the skip link works:
+
+     <main id="main" tabindex="-1"> ... </main>
+
+  For a page in a subfolder, prefix the three asset paths with ../
+  The menu links resolve themselves from the location of nav.js.
+-->
+<header data-site-nav></header>

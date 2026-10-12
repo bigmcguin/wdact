@@ -1,0 +1,24 @@
+# Protects files that must never be public. Do not remove.
+# Hostinger copies the whole repository into public_html, so these rules
+# stop visitors reading CLAUDE.md, the .claude/ folder, .git and any other
+# hidden file or folder. Requests for them get a plain 404.
+
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_alias.c>
+  # Any path segment starting with a dot (.git, .claude, .htaccess, .gitkeep),
+  # except .well-known/, which is needed for SSL certificate checks.
+  RedirectMatch 404 (?i)(^|/)\.(?!well-known(/|$))
+  # Claude's project instructions
+  RedirectMatch 404 (?i)(^|/)CLAUDE\.md$
+</IfModule>
+
+# Fallback if mod_alias is unavailable: refuse access instead.
+<IfModule !mod_alias.c>
+  <FilesMatch "(?i)^(CLAUDE\.md|\..+)$">
+    Require all denied
+  </FilesMatch>
+  RewriteEngine On
+  RewriteRule (^|/)\.(?!well-known(/|$)) - [F]
+</IfModule>

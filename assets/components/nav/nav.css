@@ -1,0 +1,242 @@
+/*
+  Shared navigation menu styles.
+  Colours, fonts and sizes come from assets/css/theme.css.
+
+  Breakpoint: the mobile menu applies under 768 px. This must match
+  DESKTOP_QUERY in nav.js.
+
+  Do not add transform, filter or backdrop-filter to .site-header: they
+  would trap the fixed mobile panel inside the header.
+*/
+
+/*
+  Sections reached from a link (in the menu, in the page, or from another
+  page) stop just below the sticky header instead of underneath it.
+  Set on elements with an id rather than as scroll-padding on <html>:
+  scroll-padding makes the page jump when the header itself gets focus.
+*/
+:where([id]:not(.site-nav__panel)) {
+  scroll-margin-top: calc(var(--nav-bar-height) + var(--space-4));
+}
+
+/* Reserve the bar's space before the script runs, so the page does not jump. */
+[data-site-nav] {
+  min-height: var(--nav-bar-height);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  background: var(--colour-paper);
+  border-bottom: 1px solid var(--colour-line);
+  font-family: var(--font-body);
+}
+
+.site-nav__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: var(--nav-bar-height);
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+/* Skip link: hidden until it receives keyboard focus */
+.site-nav__skip {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 1;
+  padding: var(--space-2) var(--space-4);
+  background: var(--colour-accent);
+  color: var(--colour-on-accent);
+  border-radius: var(--radius);
+  transform: translateY(-200%);
+}
+
+.site-nav__skip:focus {
+  transform: none;
+  color: var(--colour-on-accent);
+}
+
+.site-nav__brand {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--colour-ink);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.site-nav__brand:hover {
+  color: var(--colour-accent-strong);
+}
+
+.site-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav__link {
+  color: var(--colour-ink);
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+
+.site-nav__link:hover {
+  color: var(--colour-accent-strong);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.site-nav__link[aria-current="page"] {
+  color: var(--colour-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.4em;
+}
+
+.site-nav__skip:focus-visible,
+.site-nav__brand:focus-visible,
+.site-nav__link:focus-visible,
+.site-nav__toggle:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+/* Hamburger button */
+.site-nav__toggle {
+  display: none;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-right: calc(var(--space-2) * -1);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--colour-ink);
+  cursor: pointer;
+}
+
+.site-nav__icon,
+.site-nav__icon::before,
+.site-nav__icon::after {
+  display: block;
+  width: 1.375rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform var(--duration-fast) var(--easing),
+    background-color var(--duration-fast) var(--easing);
+}
+
+.site-nav__icon {
+  position: relative;
+}
+
+.site-nav__icon::before,
+.site-nav__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.site-nav__icon::before {
+  transform: translateY(-7px);
+}
+
+.site-nav__icon::after {
+  transform: translateY(7px);
+}
+
+/* Bars become a cross while the menu is open */
+.site-nav__toggle[aria-expanded="true"] .site-nav__icon {
+  background-color: transparent;
+}
+
+.site-nav__toggle[aria-expanded="true"] .site-nav__icon::before {
+  transform: rotate(45deg);
+}
+
+.site-nav__toggle[aria-expanded="true"] .site-nav__icon::after {
+  transform: rotate(-45deg);
+}
+
+/* Desktop: 768 px and wider */
+@media (min-width: 768px) {
+  .site-nav__list {
+    display: flex;
+    gap: var(--nav-link-gap);
+  }
+
+  .site-nav__link {
+    display: inline-block;
+    padding: var(--space-2) var(--space-1);
+  }
+}
+
+/* Mobile: under 768 px */
+@media (max-width: 767.98px) {
+  .site-nav__toggle {
+    display: inline-flex;
+  }
+
+  /* The panel fills the screen below the bar and scrolls on its own */
+  .site-nav__panel {
+    position: fixed;
+    top: var(--nav-bar-height);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: var(--space-4) var(--page-gutter) var(--space-7);
+    background: var(--colour-surface);
+    border-top: 1px solid var(--colour-line);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-0.5rem);
+    transition: opacity var(--duration-fast) var(--easing),
+      transform var(--duration-fast) var(--easing),
+      visibility 0s linear var(--duration-fast);
+  }
+
+  .site-header.is-open .site-nav__panel {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: opacity var(--duration-fast) var(--easing),
+      transform var(--duration-fast) var(--easing),
+      visibility 0s linear 0s;
+  }
+
+  .site-nav__list li {
+    border-bottom: 1px solid var(--colour-line);
+  }
+
+  .site-nav__link {
+    display: block;
+    padding: var(--space-4) var(--space-1);
+    font-size: var(--text-lg);
+  }
+}
+
+/*
+  Stops the page behind the open mobile menu from scrolling.
+  Lock <html> only: putting overflow: hidden on <body> as well makes the body
+  its own scroll container, which breaks the sticky header on scrolled pages.
+*/
+html.site-nav-lock {
+  overflow: hidden;
+}
