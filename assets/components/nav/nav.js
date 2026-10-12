@@ -73,6 +73,8 @@
     }).join('');
 
     header.classList.add('site-header');
+    // The header is fixed, so the page reserves its space (see nav.css).
+    document.documentElement.classList.add('has-site-nav');
     header.innerHTML =
       '<a class="site-nav__skip" href="#main">Skip to main content</a>' +
       '<div class="site-nav__bar">' +
@@ -156,7 +158,7 @@
       }
     });
 
-    // Space to leave above a section so the sticky header never covers it.
+    // Space to leave above a section so the fixed header never covers it.
     // Comes from scroll-margin-top in nav.css.
     function headerOffset(target) {
       var margin = parseFloat(getComputedStyle(target).scrollMarginTop);

@@ -11,7 +11,7 @@
 
 /*
   Sections reached from a link (in the menu, in the page, or from another
-  page) stop just below the sticky header instead of underneath it.
+  page) stop just below the fixed header instead of underneath it.
   Set on elements with an id rather than as scroll-padding on <html>:
   scroll-padding makes the page jump when the header itself gets focus.
 */
@@ -24,14 +24,27 @@
   min-height: var(--nav-bar-height);
 }
 
+/*
+  The header is fixed rather than sticky. iOS Safari updates sticky
+  positions late while its toolbar grows and shrinks, which made the header
+  slide out of view when scrolling back up. A fixed header stays put, and
+  nav.js adds .has-site-nav to <html> so the body keeps the bar's space.
+*/
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  right: 0;
+  left: 0;
   z-index: var(--z-nav);
   background: var(--nav-background);
   color: var(--nav-ink);
-  border-bottom: 1px solid var(--nav-line);
+  /* A shadow, not a border, so the header is exactly --nav-bar-height tall */
+  box-shadow: 0 1px 0 var(--nav-line);
   font-family: var(--font-body);
+}
+
+html.has-site-nav body {
+  padding-top: var(--nav-bar-height);
 }
 
 .site-nav__bar {
@@ -291,7 +304,7 @@
 /*
   Stops the page behind the open mobile menu from scrolling.
   Lock <html> only: putting overflow: hidden on <body> as well makes the body
-  its own scroll container, which breaks the sticky header on scrolled pages.
+  its own scroll container, which can jump scrolled pages back to the top.
 */
 html.site-nav-lock {
   overflow: hidden;

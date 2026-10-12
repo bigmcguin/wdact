@@ -83,7 +83,7 @@ main:focus {
 
 main {
   flex: 1;
-  overflow-x: clip; /* trims the angled tape band; clip keeps the sticky header working */
+  overflow-x: clip; /* trims the angled tape band without making main a scroll container */
 }
 
 .wrap {
