@@ -22,3 +22,36 @@ DirectoryIndex index.html
   RewriteEngine On
   RewriteRule (^|/)\.(?!well-known(/|$)) - [F]
 </IfModule>
+
+# ----------------------------------------------------------------------
+# Speed: compression and browser caching. Separate from the protection
+# rules above; removing this block only makes the site slower.
+# ----------------------------------------------------------------------
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain application/javascript text/javascript image/svg+xml
+</IfModule>
+
+# Images and fonts rarely change: browsers keep them for a year.
+# To replace one, save it under a new file name and update the links.
+# Pages, CSS and JavaScript are checked for changes every day so updates
+# show up quickly.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 day"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 day"
+  ExpiresByType application/javascript "access plus 1 day"
+  ExpiresByType text/javascript "access plus 1 day"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(webp|png|ico|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>

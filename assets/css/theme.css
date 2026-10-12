@@ -9,14 +9,86 @@
   text and links use the deeper olive so they stay readable.
 */
 
-/* Archivo, self-hosted (variable weight and width, Latin subset) */
+/*
+  Archivo, self-hosted. Cut down to what the site uses (weights 400 to 800,
+  widths 100% to 125%, Latin characters) so it loads quickly: 30 KB.
+  If the file changes, give it a new name so browsers fetch the new one.
+
+  font-display: optional means the page never re-flows when the font
+  arrives (no layout shift). Each page preloads the file, so on a normal
+  connection it is ready in time. On a slow first visit, that one page view
+  uses the size-matched fallback below and later pages use Archivo from
+  the cache.
+*/
 @font-face {
   font-family: "Archivo";
   font-style: normal;
-  font-weight: 100 900;
-  font-stretch: 62% 125%;
-  font-display: swap;
-  src: url("../fonts/archivo-latin-var.woff2") format("woff2");
+  font-weight: 400 800;
+  font-stretch: 100% 125%;
+  font-display: optional;
+  src: url("../fonts/archivo-subset-var.woff2") format("woff2");
+}
+
+/*
+  Fallback shown while Archivo loads. Arial (or a match) is scaled to the
+  width Archivo will have at each weight and width, so text wraps the same
+  way and nothing on the page jumps when Archivo arrives. The sizes were
+  measured against the site's own headings, intros and buttons set in
+  Archivo; re-measure if the fonts, widths or weights change.
+*/
+@font-face {
+  font-family: "Archivo Fallback";
+  font-weight: 100 500;
+  font-stretch: 100%;
+  src: local("Arial"), local("ArialMT"), local("Helvetica"), local("Liberation Sans");
+  size-adjust: 98.5%;
+  ascent-override: 89.1%;
+  descent-override: 21.3%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Archivo Fallback";
+  font-weight: 600 649;
+  font-stretch: 100%;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"), local("Liberation Sans Bold");
+  size-adjust: 94.5%;
+  ascent-override: 92.9%;
+  descent-override: 22.2%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Archivo Fallback";
+  font-weight: 650 900;
+  font-stretch: 100%;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"), local("Liberation Sans Bold");
+  size-adjust: 100%;
+  ascent-override: 87.8%;
+  descent-override: 21.0%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Archivo Fallback";
+  font-weight: 600 900;
+  font-stretch: 112%;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"), local("Liberation Sans Bold");
+  size-adjust: 109.5%;
+  ascent-override: 80.2%;
+  descent-override: 19.2%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Archivo Fallback";
+  font-weight: 600 900;
+  font-stretch: 125%;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"), local("Liberation Sans Bold");
+  size-adjust: 129.5%;
+  ascent-override: 67.8%;
+  descent-override: 16.2%;
+  line-gap-override: 0%;
 }
 
 :root {
@@ -41,8 +113,8 @@
   --colour-field-border: #858b81;   /* form field outlines (3:1 against paper) */
 
   /* Fonts */
-  --font-body: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Archivo", "Archivo Fallback", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Archivo", "Archivo Fallback", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --stretch-display: 125%;          /* expanded width for headings, echoing the logo */
   --stretch-label: 112%;
 

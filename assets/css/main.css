@@ -152,6 +152,16 @@ main {
   margin-top: var(--space-6);
 }
 
+/*
+  On narrow phones the hero buttons always stack at full width, so the
+  row never changes height when the web font finishes loading.
+*/
+@media (max-width: 479.98px) {
+  .hero .actions {
+    flex-direction: column;
+  }
+}
+
 /* ------------------------------------------------------------------
    Dark areas (hero and contact band): lime focus ring and links
    ------------------------------------------------------------------ */
