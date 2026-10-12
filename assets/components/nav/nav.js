@@ -18,12 +18,17 @@
      { label: 'Contact', href: 'index.html#contact' }.
      ------------------------------------------------------------------ */
   var NAV_CONFIG = {
-    siteName: 'Site name',
+    siteName: 'WDACT: Workplace Drug & Alcohol Compliance Testing',
+    // Optional logo shown instead of the site name (the name becomes its alt text).
+    logo: { src: 'assets/images/wdact-logo.webp', width: 190, height: 105 },
     menuLabel: 'Main',
     items: [
       { label: 'Home', href: 'index.html' },
-      { label: 'About', href: 'about.html' }
-    ]
+      { label: 'Services', href: 'services.html' },
+      { label: 'Contact', href: 'contact.html' }
+    ],
+    // Optional button that stays in the bar at every width, beside the menu.
+    action: { label: 'Call 0457 838 378', shortLabel: 'Call', href: 'tel:+61457838378' }
   };
   /* ------------------------------------------------------------------ */
 
@@ -72,16 +77,39 @@
       '<a class="site-nav__skip" href="#main">Skip to main content</a>' +
       '<div class="site-nav__bar">' +
         '<a class="site-nav__brand" href="' + resolve('index.html').href + '">' +
-          escapeHtml(NAV_CONFIG.siteName) + '</a>' +
-        '<button class="site-nav__toggle" type="button" aria-expanded="false"' +
-          ' aria-controls="' + MENU_ID + '" aria-label="Menu">' +
-          '<span class="site-nav__icon" aria-hidden="true"></span>' +
-        '</button>' +
+          brand() + '</a>' +
+        // The menu comes before the action and the toggle so the tab order
+        // matches what is on screen at both widths (the mobile panel is fixed
+        // below the bar, so its place here does not move anything).
         '<nav class="site-nav__panel" id="' + MENU_ID + '" aria-label="' +
           escapeHtml(NAV_CONFIG.menuLabel) + '">' +
           '<ul class="site-nav__list">' + items + '</ul>' +
         '</nav>' +
+        action() +
+        '<button class="site-nav__toggle" type="button" aria-expanded="false"' +
+          ' aria-controls="' + MENU_ID + '" aria-label="Menu">' +
+          '<span class="site-nav__icon" aria-hidden="true"></span>' +
+        '</button>' +
       '</div>';
+  }
+
+  function brand() {
+    var logo = NAV_CONFIG.logo;
+    if (!logo) return escapeHtml(NAV_CONFIG.siteName);
+    return '<img class="site-nav__logo" src="' + resolve(logo.src).href + '" alt="' +
+      escapeHtml(NAV_CONFIG.siteName) + '" width="' + logo.width + '" height="' + logo.height + '">';
+  }
+
+  // Links such as tel: and mailto: are used as they are; page links resolve
+  // from the site root like the menu items.
+  function action() {
+    var item = NAV_CONFIG.action;
+    if (!item) return '';
+    var href = /^[a-z]+:/i.test(item.href) ? item.href : resolve(item.href).href;
+    var short = item.shortLabel || item.label;
+    return '<a class="site-nav__action" href="' + escapeHtml(href) + '">' +
+      '<span class="site-nav__action-short" aria-hidden="true">' + escapeHtml(short) + '</span>' +
+      '<span class="site-nav__action-full">' + escapeHtml(item.label) + '</span></a>';
   }
 
   function escapeHtml(text) {

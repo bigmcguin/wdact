@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact and request a test | WDACT</title>
+  <meta name="description" content="Call WDACT on 0457 838 378 or send a test request. Drug, alcohol and hair follicle testing in Horsham and the Wimmera.">
+  <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/components/nav/nav.css">
+  <script src="assets/components/nav/nav.js" defer></script>
+  <script src="assets/js/contact-form.js" defer></script>
+</head>
+<body>
+  <header data-site-nav></header>
+
+  <main id="main" tabindex="-1">
+    <section class="hero hero--short on-dark" aria-labelledby="page-title">
+      <div class="wrap">
+        <h1 id="page-title">Contact us</h1>
+        <p class="lede">Call for the fastest answer, or send a request and we will get back to you within business hours.</p>
+      </div>
+    </section>
+
+    <div class="tape" aria-hidden="true"><span>WORKPLACE DRUG &amp; ALCOHOL COMPLIANCE TESTING</span><span>WORKPLACE DRUG &amp; ALCOHOL COMPLIANCE TESTING</span><span>WORKPLACE DRUG &amp; ALCOHOL COMPLIANCE TESTING</span><span>WORKPLACE DRUG &amp; ALCOHOL COMPLIANCE TESTING</span></div>
+
+    <div class="section">
+      <div class="wrap contact-layout">
+        <aside class="contact-layout__aside" aria-labelledby="details-title">
+          <h2 id="details-title">Get in touch</h2>
+          <dl class="details">
+            <div>
+              <dt>Phone</dt>
+              <dd><a href="tel:+61457838378">0457 838 378</a></dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:info@wdatesting.com.au">info@wdatesting.com.au</a></dd>
+            </div>
+            <div>
+              <dt>Hours</dt>
+              <dd>
+                <table class="hours">
+                  <tr><th scope="row">Mon to Fri</th><td>9 am to 5 pm</td></tr>
+                  <tr><th scope="row">Sat and Sun</th><td>Closed</td></tr>
+                </table>
+              </dd>
+            </div>
+            <div>
+              <dt>Postal address</dt>
+              <dd>PO Box 1080<br>Horsham VIC 3400</dd>
+            </div>
+          </dl>
+        </aside>
+
+        <form class="request" id="request" action="mailto:info@wdatesting.com.au" method="post" enctype="text/plain" novalidate aria-labelledby="request-title">
+          <h2 id="request-title">Request a test</h2>
+          <p class="hint">Fields marked required must be filled in. Everything else helps us prepare.</p>
+
+          <fieldset>
+            <legend>Your details</legend>
+            <p class="hint">The person or business arranging the test.</p>
+            <div class="fields">
+              <div class="field">
+                <label for="given-name">Given name/s</label>
+                <input id="given-name" name="Given name/s" type="text" autocomplete="given-name">
+              </div>
+              <div class="field">
+                <label for="last-name">Last name</label>
+                <input id="last-name" name="Last name" type="text" autocomplete="family-name">
+              </div>
+              <div class="field">
+                <label for="email">Email <span class="required">(required)</span></label>
+                <input id="email" name="Email" type="email" autocomplete="email" required aria-describedby="email-error">
+                <p class="error" id="email-error"></p>
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="Phone" type="tel" autocomplete="tel">
+              </div>
+              <div class="field field--wide">
+                <label for="company">Company</label>
+                <input id="company" name="Company" type="text" autocomplete="organization">
+              </div>
+              <div class="field field--wide">
+                <label for="street">Street address</label>
+                <input id="street" name="Street address" type="text" autocomplete="street-address">
+              </div>
+              <div class="field">
+                <label for="state">State</label>
+                <select id="state" name="State" autocomplete="address-level1">
+                  <option value=""></option>
+                  <option>VIC</option>
+                  <option>NSW</option>
+                  <option>SA</option>
+                  <option>QLD</option>
+                  <option>TAS</option>
+                  <option>WA</option>
+                  <option>NT</option>
+                  <option>ACT</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="postcode">Postcode</label>
+                <input id="postcode" name="Postcode" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="4">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Person being tested</legend>
+            <p class="hint">Only needed if the test is for someone else, such as an employee or a client.</p>
+            <div class="fields">
+              <div class="field">
+                <label for="client-given-name">Given name/s</label>
+                <input id="client-given-name" name="Client given name/s" type="text" autocomplete="off">
+              </div>
+              <div class="field">
+                <label for="client-last-name">Last name</label>
+                <input id="client-last-name" name="Client last name" type="text" autocomplete="off">
+              </div>
+              <div class="field">
+                <label for="client-dob">Date of birth</label>
+                <input id="client-dob" name="Client date of birth" type="date" autocomplete="off">
+              </div>
+              <div class="field">
+                <label for="client-phone">Phone</label>
+                <input id="client-phone" name="Client phone" type="tel" autocomplete="off">
+              </div>
+              <div class="field field--wide">
+                <label for="client-email">Email</label>
+                <input id="client-email" name="Client email" type="email" autocomplete="off">
+              </div>
+              <div class="field field--wide">
+                <label for="client-street">Street address</label>
+                <input id="client-street" name="Client street address" type="text" autocomplete="off">
+              </div>
+              <div class="field">
+                <label for="client-state">State</label>
+                <select id="client-state" name="Client state" autocomplete="off">
+                  <option value=""></option>
+                  <option>VIC</option>
+                  <option>NSW</option>
+                  <option>SA</option>
+                  <option>QLD</option>
+                  <option>TAS</option>
+                  <option>WA</option>
+                  <option>NT</option>
+                  <option>ACT</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="client-postcode">Postcode</label>
+                <input id="client-postcode" name="Client postcode" type="text" inputmode="numeric" autocomplete="off" maxlength="4">
+              </div>
+              <div class="field" role="group" aria-labelledby="legal-aid-label">
+                <span class="label" id="legal-aid-label">Legal aid</span>
+                <div class="yes-no">
+                  <label><input type="radio" name="Legal aid" value="Yes"> Yes</label>
+                  <label><input type="radio" name="Legal aid" value="No"> No</label>
+                </div>
+              </div>
+              <div class="field" role="group" aria-labelledby="court-order-label">
+                <span class="label" id="court-order-label">Court order</span>
+                <div class="yes-no">
+                  <label><input type="radio" name="Court order" value="Yes"> Yes</label>
+                  <label><input type="radio" name="Court order" value="No"> No</label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Hair drug and alcohol testing</legend>
+            <p class="hint">Choose one if you need a hair test. The Standard Drug Test covers cocaine, opioids, PCP, amphetamines and cannabis (THC).</p>
+            <ul class="choices">
+              <li><label class="choice"><input type="radio" name="Hair test" value="654 Standard Drug Test (SDT)"><span><span class="choice__code">654</span> Standard Drug Test (SDT)</span></label></li>
+              <li><label class="choice"><input type="radio" name="Hair test" value="109 Benzodiazepines (standalone test)"><span><span class="choice__code">109</span> Benzodiazepines (standalone test)</span></label></li>
+              <li><label class="choice"><input type="radio" name="Hair test" value="100 Synthetic cannabinoids (standalone test)"><span><span class="choice__code">100</span> Synthetic cannabinoids (standalone test)</span></label></li>
+              <li><label class="choice"><input type="radio" name="Hair test" value="118 Fentanyl (standalone test)"><span><span class="choice__code">118</span> Fentanyl (standalone test)</span></label></li>
+              <li><label class="choice"><input type="radio" name="Hair test" value="920 EtG alcohol"><span><span class="choice__code">920</span> EtG alcohol</span></label></li>
+              <li><label class="choice"><input type="radio" name="Hair test" value="782 SDT panel (654) and benzodiazepines"><span><span class="choice__code">782</span> SDT panel (654) and benzodiazepines</span></label></li>
+              <li><label class="choice"><input type="radio" name="Hair test" value="781 SDT panel (654) and EtG alcohol"><span><span class="choice__code">781</span> SDT panel (654) and EtG alcohol</span></label></li>
+              <li><label class="choice"><input type="radio" name="Hair test" value="863 SDT, EtG alcohol and benzodiazepines"><span><span class="choice__code">863</span> SDT, EtG alcohol and benzodiazepines</span></label></li>
+            </ul>
+          </fieldset>
+
+          <fieldset>
+            <legend>Anything else</legend>
+            <div class="fields">
+              <div class="field field--wide">
+                <label for="other-testing">Other testing</label>
+                <input id="other-testing" name="Other testing" type="text" aria-describedby="other-testing-hint">
+                <p class="hint" id="other-testing-hint">For example, onsite oral fluid or urine testing for a team.</p>
+              </div>
+              <div class="field field--wide">
+                <label for="message">Message</label>
+                <textarea id="message" name="Message" rows="4"></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="consent">
+            <input id="consent" name="Consent" type="checkbox" value="Yes" required aria-describedby="consent-error">
+            <label for="consent">I agree that WDACT may collect and use the information in this form to contact me about my request. <span class="required">(required)</span></label>
+          </div>
+          <p class="error" id="consent-error"></p>
+
+          <button class="button button--dark" type="submit">Send request</button>
+          <p class="hint" id="send-hint">Sending opens your email app with your request filled in. Press send there to finish.</p>
+          <div class="form-status" id="form-status" role="status"></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer on-dark">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <p class="site-footer__name">WDACT</p>
+          <p>Workplace Drug &amp; Alcohol Compliance Testing, serving Horsham and the Wimmera.</p>
+        </div>
+        <dl class="details">
+          <div><dt>Phone</dt><dd><a href="tel:+61457838378">0457 838 378</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:info@wdatesting.com.au">info@wdatesting.com.au</a></dd></div>
+        </dl>
+        <dl class="details">
+          <div><dt>Hours</dt><dd>Mon to Fri, 9 am to 5 pm<br>Closed weekends</dd></div>
+        </dl>
+        <dl class="details">
+          <div><dt>Postal address</dt><dd>PO Box 1080<br>Horsham VIC 3400</dd></div>
+        </dl>
+      </div>
+      <p class="site-footer__legal">&copy; WDACT. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

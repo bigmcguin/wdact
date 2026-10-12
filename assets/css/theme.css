@@ -3,34 +3,58 @@
 
   This is the ONLY file where colours and fonts are set. Every other
   stylesheet (including the nav component) reads these custom properties.
-  The values below are placeholders for the template: replace them with
-  each site's own palette and typefaces.
+
+  WDACT brand: charcoal and the lime taken from the WDACT logo.
+  Lime is only used as a fill or on charcoal; on light backgrounds,
+  text and links use the deeper olive so they stay readable.
 */
 
+/* Archivo, self-hosted (variable weight and width, Latin subset) */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("../fonts/archivo-latin-var.woff2") format("woff2");
+}
+
 :root {
-  /* Colour: placeholder palette (cool paper, slate ink, eucalyptus accent) */
-  --colour-paper: #f2f4f1;          /* page background */
-  --colour-surface: #ffffff;        /* raised surfaces, mobile menu panel */
-  --colour-ink: #1f2a2e;            /* body text */
-  --colour-ink-muted: #56636a;      /* secondary text */
-  --colour-line: #d3d9d6;           /* borders and dividers */
-  --colour-accent: #2d6a58;         /* links, current page, focus ring */
-  --colour-accent-strong: #1d4a3d;  /* hover and pressed states */
+  /* Colour */
+  --colour-paper: #f7f8f5;          /* page background */
+  --colour-surface: #ffffff;        /* raised surfaces, form fields */
+  --colour-ink: #2e3235;            /* body text */
+  --colour-ink-muted: #565c60;      /* secondary text */
+  --colour-line: #d9ddd5;           /* borders and dividers */
+  --colour-accent: #4b6a10;         /* links, current page, focus ring (on light) */
+  --colour-accent-strong: #354b0a;  /* hover and pressed states */
   --colour-on-accent: #ffffff;      /* text on accent backgrounds */
 
-  /* Fonts: system stacks so the template loads nothing extra */
-  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --colour-charcoal: #2e3235;       /* header, hero and footer */
+  --colour-slab: #3b4044;           /* raised areas on charcoal */
+  --colour-on-charcoal: #f1f3ee;    /* text on charcoal */
+  --colour-on-charcoal-muted: #c3c8c2;
+  --colour-lime: #a9cc3c;           /* WDACT logo lime: fills, and accents on charcoal */
+  --colour-lime-strong: #bedd5a;    /* hover on charcoal */
+  --colour-on-lime: #23270f;        /* text on lime */
+  --colour-error: #a32c1e;          /* form errors */
+  --colour-field-border: #858b81;   /* form field outlines (3:1 against paper) */
+
+  /* Fonts */
+  --font-body: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --stretch-display: 125%;          /* expanded width for headings, echoing the logo */
+  --stretch-label: 112%;
 
   /* Type scale (roughly a 1.25 ratio) */
   --text-sm: 0.875rem;
   --text-base: 1.0625rem;
   --text-lg: 1.25rem;
   --text-xl: 1.6rem;
-  --text-2xl: 2.1rem;
-  --text-3xl: clamp(2.4rem, 6vw, 3.6rem);
+  --text-2xl: clamp(1.75rem, 3.6vw, 2.25rem);
+  --text-3xl: clamp(2.1rem, 5.6vw, 3.5rem);
   --leading-body: 1.6;
-  --leading-tight: 1.15;
+  --leading-tight: 1.1;
   --measure: 66ch;                  /* comfortable line length */
 
   /* Spacing */
@@ -42,16 +66,23 @@
   --space-6: 2rem;
   --space-7: 3rem;
   --space-8: 4.5rem;
+  --space-9: 6rem;
 
   /* Layout */
   --page-max-width: 72rem;
   --page-gutter: clamp(1rem, 4vw, 2.5rem);
-  --radius: 0.375rem;
+  --radius: 0.25rem;
 
   /* Navigation */
-  --nav-bar-height: 4rem;           /* fixed height of the top bar */
+  --nav-bar-height: 4.5rem;         /* fixed height of the top bar */
   --nav-link-gap: var(--space-5);
+  --nav-background: var(--colour-charcoal);
+  --nav-ink: var(--colour-on-charcoal);
+  --nav-line: #474c50;
+  --nav-current: var(--colour-lime);
+  --nav-logo-height: 3.5rem;
   --focus-ring: 3px solid var(--colour-accent);
+  --focus-ring-on-dark: 3px solid var(--colour-lime);
   --focus-offset: 3px;
 
   /* Stacking order: the header must sit above everything else on the page */
